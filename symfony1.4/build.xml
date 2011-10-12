@@ -144,9 +144,9 @@
           description="Generate API documentation using PHPDocumentor">
     <exec executable="phpdoc">
       <arg value="--directory" />
-      <arg path="${basedir}/apps,${basedir}/config,${basedir}/lib" />
+      <arg value="${basedir}/apps,${basedir}/config,${basedir}/lib" />
       <arg value="--ignore" />
-      <arg path="*/vendor/symfony/*,*/doctrine/base/*,*/doctrine/*/base/*,*/test/*" />
+      <arg value="*/vendor/symfony/*,*/doctrine/base/*,*/doctrine/*/base/*,*/test/*" />
       <arg value="--target" />
       <arg path="${basedir}/build/api" />
     </exec>
