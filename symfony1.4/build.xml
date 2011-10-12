@@ -3,9 +3,11 @@
   <description>
     Symfony 1.4 Build File, https://github.com/JoshuaEstes/continuous_integration
   </description>
-  <target name="build" depends="prepare,lint,phploc,pdepend,phpmd-ci,phpcs-ci,phpcpd,phpdoc"/>
+  <target name="build"
+          depends="prepare,lint,phploc,pdepend,phpmd-ci,phpcs-ci,phpcpd,phpdoc,symfonytestall"/>
 
-  <target name="build-parallel" depends="prepare,lint,tools-parallel"/>
+  <target name="build-parallel"
+          depends="prepare,lint,tools-parallel,symfonytestall"/>
 
   <target name="tools-parallel"
           description="Run tools in parallel">
@@ -149,6 +151,16 @@
       <arg value="*/vendor/symfony/*,*/doctrine/base/*,*/doctrine/*/base/*,*/test/*" />
       <arg value="--target" />
       <arg path="${basedir}/build/api" />
+    </exec>
+  </target>
+
+  <target name="symfonytestall"
+          description="Runs all the functional and unit test">
+    <exec executable="php"
+          failonerror="true">
+      <arg value="${basedir}/symfony" />
+      <arg value="test:all" />
+      <arg value="--xml=${basedir}/build/logs/junit.xml" />
     </exec>
   </target>
 </project>
