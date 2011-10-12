@@ -68,14 +68,14 @@
       <arg value="root" />
     </exec>
     <exec executable="php">
-      <arg value="symfony" />
+      <arg value="${basedir}/symfony" />
       <arg value="doctrine:build" />
       <arg value="--no-confirmation" />
       <arg value="--all" />
       <arg value="--and-load" />
     </exec>
     <exec executable="php">
-      <arg value="symfony" />
+      <arg value="${basedir}/symfony" />
       <arg value="doctrine:build" />
       <arg value="--env=test" />
       <arg value="--no-confirmation" />
