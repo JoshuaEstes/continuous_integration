@@ -4,10 +4,10 @@
     Symfony 1.4 Build File, https://github.com/JoshuaEstes/continuous_integration
   </description>
   <target name="build"
-          depends="prepare,lint,phploc,pdepend,phpmd-ci,phpcs-ci,phpcpd,phpdoc,symfonytestall"/>
+          depends="prepare,lint,phploc,pdepend,phpmd-ci,phpcs-ci,phpcpd,phpdoc,symfony.testall"/>
 
   <target name="build-parallel"
-          depends="prepare,lint,tools-parallel,symfonytestall"/>
+          depends="prepare,lint,tools-parallel,symfony.testall"/>
 
   <target name="tools-parallel"
           description="Run tools in parallel">
@@ -32,6 +32,11 @@
     <delete dir="${basedir}/build/pdepend"/>
   </target>
 
+  <target name="symfony.clean"
+          description="Cleans up symfony data">
+    <delete file="${basedir}/config/databases.yml" />
+  </target>
+
   <target name="prepare"
           depends="clean"
           description="Prepare for build">
@@ -40,6 +45,43 @@
     <mkdir dir="${basedir}/build/coverage"/>
     <mkdir dir="${basedir}/build/logs"/>
     <mkdir dir="${basedir}/build/pdepend"/>
+  </target>
+
+  <target name="symfony.prepare" depends="symfony.clean">
+    <touch file="${basedir}/config/databases.yml" />
+    <exec executable="php">
+      <arg value="${basedir}/symfony" />
+      <arg value="configure:database" />
+      <arg value="--env=all" />
+      <arg value="--class=sfDoctrineDatabase" />
+      <arg value="mysql:host=localhost;dbname=project" />
+      <arg value="root" />
+      <arg value="root" />
+    </exec>
+    <exec executable="php">
+      <arg value="${basedir}/symfony" />
+      <arg value="configure:database" />
+      <arg value="--env=test" />
+      <arg value="--class=sfDoctrineDatabase" />
+      <arg value="mysql:host=localhost;dbname=project_test" />
+      <arg value="root" />
+      <arg value="root" />
+    </exec>
+    <exec executable="php">
+      <arg value="symfony" />
+      <arg value="doctrine:build" />
+      <arg value="--no-confirmation" />
+      <arg value="--all" />
+      <arg value="--and-load" />
+    </exec>
+    <exec executable="php">
+      <arg value="symfony" />
+      <arg value="doctrine:build" />
+      <arg value="--env=test" />
+      <arg value="--no-confirmation" />
+      <arg value="--all" />
+      <arg value="--and-load" />
+    </exec>
   </target>
 
   <target name="lint"
@@ -154,7 +196,7 @@
     </exec>
   </target>
 
-  <target name="symfonytestall"
+  <target name="symfony.testall"
           description="Runs all the functional and unit test">
     <exec executable="php"
           failonerror="true">
