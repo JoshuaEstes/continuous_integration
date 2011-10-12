@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="symfony1.4" default="build" basedir=".">
+<project name="symfony1.2" default="build" basedir=".">
   <description>
-    Symfony 1.4 Build File, https://github.com/JoshuaEstes/continuous_integration
+    Symfony 1.2 Build File, https://github.com/JoshuaEstes/continuous_integration
   </description>
   <target name="build"
           depends="prepare,lint,phploc,pdepend,phpmd-ci,phpcs-ci,phpcpd,phpdoc,symfony.testall"/>
