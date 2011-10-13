@@ -30,6 +30,7 @@
     <delete dir="${basedir}/build/coverage"/>
     <delete dir="${basedir}/build/logs"/>
     <delete dir="${basedir}/build/pdepend"/>
+    <antcall target="symfony.clean" />
   </target>
 
   <target name="symfony.clean"
@@ -45,6 +46,7 @@
     <mkdir dir="${basedir}/build/coverage"/>
     <mkdir dir="${basedir}/build/logs"/>
     <mkdir dir="${basedir}/build/pdepend"/>
+    <antcall target="symfony.prepare" />
   </target>
 
   <target name="symfony.prepare" depends="symfony.clean">
@@ -68,19 +70,15 @@
       <arg value="root" />
     </exec>
     <exec executable="php">
-      <arg value="symfony" />
-      <arg value="doctrine:build" />
+      <arg value="${basedir}/symfony" />
+      <arg value="doctrine:build-all-load" />
       <arg value="--no-confirmation" />
-      <arg value="--all" />
-      <arg value="--and-load" />
     </exec>
     <exec executable="php">
-      <arg value="symfony" />
-      <arg value="doctrine:build" />
+      <arg value="${basedir}/symfony" />
+      <arg value="doctrine:build-all-load" />
       <arg value="--env=test" />
       <arg value="--no-confirmation" />
-      <arg value="--all" />
-      <arg value="--and-load" />
     </exec>
   </target>
 
