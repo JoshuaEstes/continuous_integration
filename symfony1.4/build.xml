@@ -4,10 +4,10 @@
     Symfony 1.4 Build File, https://github.com/JoshuaEstes/continuous_integration
   </description>
   <target name="build"
-          depends="prepare,lint,phploc,pdepend,phpmd-ci,phpcs-ci,phpcpd,phpdoc,symfony.testall"/>
+          depends="prepare,lint,phploc,pdepend,phpmd-ci,phpcs-ci,phpcpd,phpdoc,symfony.testall,phpcb"/>
 
   <target name="build-parallel"
-          depends="prepare,lint,tools-parallel,symfony.testall"/>
+          depends="prepare,lint,tools-parallel,symfony.testall,phpcb"/>
 
   <target name="tools-parallel"
           description="Run tools in parallel">
@@ -30,6 +30,7 @@
     <delete dir="${basedir}/build/coverage"/>
     <delete dir="${basedir}/build/logs"/>
     <delete dir="${basedir}/build/pdepend"/>
+    <antcall target="symfony.clean" />
   </target>
 
   <target name="symfony.clean"
@@ -45,9 +46,10 @@
     <mkdir dir="${basedir}/build/coverage"/>
     <mkdir dir="${basedir}/build/logs"/>
     <mkdir dir="${basedir}/build/pdepend"/>
+    <antcall target="symfony.prepare" />
   </target>
 
-  <target name="symfony.prepare" depends="symfony.clean">
+  <target name="symfony.prepare">
     <touch file="${basedir}/config/databases.yml" />
     <exec executable="php">
       <arg value="${basedir}/symfony" />
@@ -205,4 +207,29 @@
       <arg value="--xml=${basedir}/build/logs/junit.xml" />
     </exec>
   </target>
+
+  <target name="phpcb"
+          description="Aggregate tool output with PHP_CodeBrowser">
+    <exec executable="phpcb">
+      <arg value="--log" />
+      <arg value="${basedir}/build/logs" />
+      <arg value="--source" />
+      <arg value="${basedir}/apps" />
+      <arg value="--source" />
+      <arg value="${basedir}/lib" />
+      <arg value="--source" />
+      <arg value="${basedir}/plugins" />
+      <arg value="--exclude" />
+      <arg value="*/lib/vendor/*" />
+      <arg value="--exclude" />
+      <arg value="*/doctrine/base/*" />
+      <arg value="--exclude" />
+      <arg value="*/doctrine/*/base/*" />
+      <arg value="--exclude" />
+      <arg value="*/test/*" />
+      <arg value="--output" />
+      <arg path="${basedir}/build/code-browser" />
+    </exec>
+  </target>
+  
 </project>
