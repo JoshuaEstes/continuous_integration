@@ -114,6 +114,7 @@
 
       <fileset dir="${basedir}/plugins">
         <include name="**/*.php" />
+        <exclude name="**/skeleton/**" />
       </fileset>
 
       <fileset dir="${basedir}/test">
