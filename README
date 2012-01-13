@@ -1,0 +1,12 @@
+Continuous Integration Scripts
+==============================
+
+These are build files for various difference projects. This is for testing
+your code. These scripts are used with Jenkins CI.
+
+Installation
+============
+
+Each directory should be named for the project it is building. Within that
+directory you will find the scripts to make sure you project can be built
+successfully.
