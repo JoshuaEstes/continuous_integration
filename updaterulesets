@@ -1,0 +1,7 @@
+#!/bin/bash
+
+raw_url='https://raw.github.com/JoshuaEstes/continuous_integration/master'
+project='symfony1.4'
+
+wget $raw_url/$project/build/phpcs.xml -O $PWD/build/phpcs.xml
+wget $raw_url/$project/build/phpmd.xml -O $PWD/build/phpmd.xml
