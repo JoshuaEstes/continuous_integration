@@ -92,6 +92,9 @@
     </exec>
   </target>
 
+  <!--
+  Checks the php syntax
+  -->
   <target name="lint"
           description="Syntax check">
     <apply executable="php" failonerror="true">
@@ -128,6 +131,10 @@
     </apply>
   </target>
 
+  <!--
+  PHP Lines of Code
+  @see http://sebastianbergmann.github.com/phploc/
+  -->
   <target name="phploc"
           description="Measure project size using PHPLOC">
     <exec executable="phploc">
@@ -143,6 +150,10 @@
     </exec>
   </target>
 
+  <!--
+  PHP Depend
+  @see http://pdepend.org/
+  -->
   <target name="pdepend"
           description="Calculate software metrics using PHP_Depend">
     <exec executable="pdepend">
@@ -154,6 +165,10 @@
     </exec>
   </target>
 
+  <!--
+  PHP Mess Detector
+  @see http://phpmd.org/
+  -->
   <target name="phpmd-ci"
           description="Perform project mess detection using PHPMD">
     <exec executable="phpmd">
@@ -167,17 +182,25 @@
     </exec>
   </target>
 
+  <!--
+  PHP CodeSniffer
+  @see http://pear.php.net/package/PHP_CodeSniffer
+  -->
   <target name="phpcs-ci"
           description="Find coding standard violations using PHP_CodeSniffer">
     <exec executable="phpcs" output="/dev/null">
       <arg value="--report=checkstyle" />
       <arg value="--report-file=${basedir}/build/logs/checkstyle.xml" />
       <arg value="--standard=${basedir}/build/phpcs.xml" />
-      <arg value="--ignore=${basedir}/cache/*,${basedir}/log/*,${basedir}/lib/vendor/*,${basedir}/plugins/*,${basedir}/web/*" />
+      <arg value="--ignore=${basedir}/cache/*,${basedir}/log/*,${basedir}/lib/vendor/*,${basedir}/plugins/*,${basedir}/web/*,${basedir}/lib/migration/doctrine/*,${basedir}/lib/*/doctrine/base/*,${basedir}/lib/*/doctrine/*/base/*" />
       <arg path="${basedir}" />
     </exec>
   </target>
 
+  <!--
+  PHP Copy/Paste Detector
+  @see https://github.com/sebastianbergmann/phpcpd
+  -->
   <target name="phpcpd"
           description="Find duplicate code using PHPCPD">
     <exec executable="phpcpd">
@@ -193,6 +216,10 @@
     </exec>
   </target>
 
+  <!--
+  phpDocumentor
+  @see http://www.phpdoc.org/
+  -->
   <target name="phpdoc"
           description="Generate API documentation using PHPDocumentor">
     <exec executable="phpdoc">
@@ -215,6 +242,10 @@
     </exec>
   </target>
 
+  <!--
+  PHP CodeBrowser
+  @see http://pear.phpunit.de/
+  -->
   <target name="phpcb"
           description="Aggregate tool output with PHP_CodeBrowser">
     <exec executable="phpcb">
