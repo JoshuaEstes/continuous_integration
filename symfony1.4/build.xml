@@ -199,7 +199,7 @@
       <arg value="--directory" />
       <arg value="${basedir}/apps,${basedir}/config,${basedir}/lib" />
       <arg value="--ignore" />
-      <arg value="*/vendor/symfony/*,*/doctrine/base/*,*/doctrine/*/base/*,*/test/*" />
+      <arg value="*/vendor/symfony/*,*/doctrine/base/*,*/doctrine/*/base/*,*/test/*,*/lib/migration/doctrine/*" />
       <arg value="--target" />
       <arg path="${basedir}/build/api" />
     </exec>
