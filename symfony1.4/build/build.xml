@@ -1,0 +1,21 @@
+<project>
+  <target name="build"
+          depends="prepare,lint,phploc,pdepend,phpmd,phpcs,phpcpd,phpdoc,symfony.test-all,phpcb"/>
+
+  <target name="build-parallel"
+          depends="prepare,lint,tools-parallel,symfony.test-all,phpcb"/>
+
+  <target name="tools-parallel"
+          description="Run tools in parallel">
+    <parallel threadCount="2">
+      <sequential>
+        <antcall target="pdepend"/>
+        <antcall target="phpmd"/>
+      </sequential>
+      <antcall target="phpcpd"/>
+      <antcall target="phpcs"/>
+      <antcall target="phploc"/>
+      <antcall target="phpdoc"/>
+    </parallel>
+  </target>
+</project>

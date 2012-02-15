@@ -1,0 +1,12 @@
+<project>
+  <target name="symfony.test-coverage"
+          description="Runs coverage test">
+    <exec executable="php"
+          failonerror="true">
+      <arg value="${basedir}/symfony" />
+      <arg value="test:coverage" />
+      <arg value="${basedir}/test/unit/model" />
+      <arg value="${basedir}/lib/model" />
+    </exec>
+  </target>
+</project>

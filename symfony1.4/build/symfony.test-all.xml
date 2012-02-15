@@ -1,0 +1,11 @@
+<project>
+  <target name="symfony.test-all"
+          description="Runs all the functional and unit test">
+    <exec executable="php"
+          failonerror="true">
+      <arg value="${basedir}/symfony" />
+      <arg value="test:all" />
+      <arg value="--xml=${basedir}/build/logs/junit.xml" />
+    </exec>
+  </target>
+</project>

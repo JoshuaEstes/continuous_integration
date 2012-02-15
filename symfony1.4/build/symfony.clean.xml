@@ -1,0 +1,11 @@
+<project>
+  <target name="symfony.clean"
+          description="Cleans up symfony data">
+    <delete file="${basedir}/config/databases.yml" />
+    <exec executable="php">
+      <arg value="${basedir}/symfony" />
+      <arg value="doctrine:clean-model-files" />
+      <arg value="--no-confirmation" />
+    </exec>
+  </target>
+</project>

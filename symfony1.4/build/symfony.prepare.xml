@@ -1,0 +1,23 @@
+<project>
+  <target name="symfony.prepare">
+    <touch file="${basedir}/config/databases.yml" />
+    <mkdir dir="${basedir}/web/uploads" />
+    <exec executable="php">
+      <arg value="${basedir}/symfony" />
+      <arg value="configure:database" />
+      <arg value="--env=test" />
+      <arg value="--class=sfDoctrineDatabase" />
+      <arg value="mysql:host=${db.host};dbname=${db.name}" />
+      <arg value="${db.user}" />
+      <arg value="${db.pass}" />
+    </exec>
+    <exec executable="php">
+      <arg value="${basedir}/symfony" />
+      <arg value="doctrine:build" />
+      <arg value="--no-confirmation" />
+      <arg value="--all" />
+      <arg value="--and-load" />
+      <arg value="--env=test" />
+    </exec>
+  </target>
+</project>
