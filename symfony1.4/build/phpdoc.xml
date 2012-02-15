@@ -1,0 +1,13 @@
+<project>
+  <target name="phpdoc"
+          description="Generate API documentation using PHPDocumentor">
+    <exec executable="phpdoc">
+      <arg value="--directory" />
+      <arg value="${basedir}/apps,${basedir}/config,${basedir}/lib" />
+      <arg value="--ignore" />
+      <arg value="*/vendor/symfony/*,*/doctrine/base/*,*/doctrine/*/base/*,*/test/*,*/migration/doctrine/*" />
+      <arg value="--target" />
+      <arg path="${basedir}/build/api" />
+    </exec>
+  </target>
+</project>

@@ -1,0 +1,28 @@
+<project>
+  <target name="lint"
+          description="Syntax check">
+    <apply executable="php" failonerror="true">
+      <arg value="-l" />
+
+      <fileset dir="${basedir}/apps">
+        <include name="**/*.php" />
+      </fileset>
+
+      <fileset dir="${basedir}/config">
+        <include name="**/*.php" />
+      </fileset>
+
+      <fileset dir="${basedir}/lib">
+        <include name="**/*.php" />
+        <exclude name="**/vendor/**" />
+        <exclude name="**/doctrine/base/**" />
+        <exclude name="**/doctrine/**/base/**" />
+      </fileset>
+
+      <fileset dir="${basedir}/web">
+        <include name="**/*.php" />
+      </fileset>
+
+    </apply>
+  </target>
+</project>

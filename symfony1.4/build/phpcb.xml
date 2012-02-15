@@ -1,0 +1,25 @@
+<project>
+  <target name="phpcb"
+          description="Aggregate tool output with PHP_CodeBrowser">
+    <exec executable="phpcb">
+      <arg value="--log" />
+      <arg value="${basedir}/build/logs" />
+      <arg value="--source" />
+      <arg value="${basedir}/apps" />
+      <arg value="--source" />
+      <arg value="${basedir}/lib" />
+      <arg value="--source" />
+      <arg value="${basedir}/plugins" />
+      <arg value="--exclude" />
+      <arg value="*/lib/vendor/*" />
+      <arg value="--exclude" />
+      <arg value="*/doctrine/base/*" />
+      <arg value="--exclude" />
+      <arg value="*/doctrine/*/base/*" />
+      <arg value="--exclude" />
+      <arg value="*/test/*" />
+      <arg value="--output" />
+      <arg path="${basedir}/build/code-browser" />
+    </exec>
+  </target>
+</project>
