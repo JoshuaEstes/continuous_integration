@@ -138,7 +138,7 @@
          dest="${basedir}/build/symfony.test-all.xml"
          verbose="true" />
     <get src="https://raw.github.com/JoshuaEstes/continuous_integration/master/symfony1.4/build/symfony.test-coverage.xml"
-         dest="${basedir}/build/symfony.test-all.xml"
+         dest="${basedir}/build/symfony.test-coverage.xml"
          verbose="true" />
   </target>
   
