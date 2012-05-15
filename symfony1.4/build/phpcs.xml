@@ -5,7 +5,7 @@
       <arg value="--report=checkstyle" />
       <arg value="--report-file=${basedir}/build/logs/checkstyle.xml" />
       <arg value="--standard=${basedir}/build/ruleset/phpcs.xml" />
-      <arg value="--ignore=${basedir}/cache/*,${basedir}/log/*,${basedir}/lib/vendor/*,${basedir}/plugins/*,${basedir}/web/*,${basedir}/lib/migration/doctrine/*,${basedir}/lib/*/doctrine/base/*,${basedir}/lib/*/doctrine/*/base/*" />
+      <arg value="--ignore=${basedir}/build/*,${basedir}/cache/*,${basedir}/data/*,${basedir}/lib/vendor/*,${basedir}/log/*,${basedir}/plugins/*,${basedir}/lib/*/doctrine/base/*,${basedir}/lib/*/doctrine/*/base/*" />
       <arg path="${basedir}" />
     </exec>
   </target>

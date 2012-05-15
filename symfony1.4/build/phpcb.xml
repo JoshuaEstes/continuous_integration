@@ -8,8 +8,6 @@
       <arg value="${basedir}/apps" />
       <arg value="--source" />
       <arg value="${basedir}/lib" />
-      <arg value="--source" />
-      <arg value="${basedir}/plugins" />
       <arg value="--exclude" />
       <arg value="*/lib/vendor/*" />
       <arg value="--exclude" />

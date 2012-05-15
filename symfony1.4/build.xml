@@ -28,6 +28,7 @@
 
   <!--
   Checks the php syntax
+  @see http://www.php.net/manual/en/features.commandline.options.php
   -->
   <import file="${basedir}/build/lint.xml" />
 

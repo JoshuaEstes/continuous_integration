@@ -5,11 +5,17 @@
       <arg value="--log-pmd" />
       <arg value="${basedir}/build/logs/pmd-cpd.xml" />
       <arg value="--exclude" />
+      <arg value="${basedir}/build" />
+      <arg value="--exclude" />
       <arg value="${basedir}/cache" />
       <arg value="--exclude" />
       <arg value="${basedir}/lib/vendor" />
       <arg value="--exclude" />
       <arg value="${basedir}/log" />
+      <arg value="--exclude" />
+      <arg value="${basedir}/plugins" />
+      <arg value="--exclude" />
+      <arg value="${basedir}/test" />
       <arg path="${basedir}" />
     </exec>
   </target>

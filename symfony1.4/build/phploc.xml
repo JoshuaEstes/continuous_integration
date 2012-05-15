@@ -5,7 +5,11 @@
       <arg value="--log-csv" />
       <arg value="${basedir}/build/logs/phploc.csv" />
       <arg value="--exclude" />
+      <arg value="${basedir}/build" />
+      <arg value="--exclude" />
       <arg value="${basedir}/cache" />
+      <arg value="--exclude" />
+      <arg value="${basedir}/data" />
       <arg value="--exclude" />
       <arg value="${basedir}/lib/vendor" />
       <arg value="--exclude" />
