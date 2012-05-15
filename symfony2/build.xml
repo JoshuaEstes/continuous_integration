@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="symfony2" default="build" basedir=".">
+  <description>
+    Symfony2 Build File, https://github.com/JoshuaEstes/continuous_integration
+  </description>
+  <!--
+  These should now be the only things you need to edit. Change the values to
+  what you need to. The rest can be updated by just running "ant update"
+  -->
+  <property name="db.host" value="127.0.0.1" />
+  <!--
+  Your database name should end with _test since running this build file WILL drop
+  that database then create the database.
+  -->
+  <property name="db.name" value="project_test" />
+  <property name="db.user" value="root" />
+  <property name="db.pass" value="root" />
+
+  <!--
+  Nothing below here needs to be edited.
+  -->
+
+  <import file="${basedir}/build/build.xml" />
+  <import file="${basedir}/build/clean.xml" />
+  <import file="${basedir}/build/symfony.clean.xml" />
+  <import file="${basedir}/build/prepare.xml" />
+  <import file="${basedir}/build/symfony.prepare.xml" />
+
+  <!--
+  Checks the php syntax
+  @see http://www.php.net/manual/en/features.commandline.options.php
+  -->
+  <import file="${basedir}/build/lint.xml" />
+
+  <!--
+  PHP Lines of Code
+  @see http://sebastianbergmann.github.com/phploc/
+  -->
+  <import file="${basedir}/build/phploc.xml" />
+
+  <!--
+  PHP Depend
+  @see http://pdepend.org/
+  -->
+  <import file="${basedir}/build/pdepend.xml" />
+
+  <!--
+  PHP Mess Detector
+  @see http://phpmd.org/
+  -->
+  <import file="${basedir}/build/phpmd.xml" />
+
+  <!--
+  PHP CodeSniffer
+  @see http://pear.php.net/package/PHP_CodeSniffer
+  -->
+  <import file="${basedir}/build/phpcs.xml" />
+
+  <!--
+  PHP Copy/Paste Detector
+  @see https://github.com/sebastianbergmann/phpcpd
+  -->
+  <import file="${basedir}/build/phpcpd.xml" />
+
+  <!--
+  phpDocumentor
+  @see http://www.phpdoc.org/
+  -->
+  <import file="${basedir}/build/phpdoc.xml" />
+
+  <!--
+  PHP CodeBrowser
+  @see http://pear.phpunit.de/
+  -->
+  <import file="${basedir}/build/phpcb.xml" />
+
+  <!--
+  Run ./symfony test:all
+  -->
+  <import file="${basedir}/build/symfony.test-all.xml" />
+
+  <!--
+  Run ./symfony test:coverage
+  -->
+  <import file="${basedir}/build/symfony.test-coverage.xml" />
+
+  <!--
+  Update the build xml files, you can change the src to be whatever you want to
+  reflect your own repo
+  -->
+  <target name="update"
+          description="Updates all the build settings and scripts">
+    <get src="https://raw.github.com/JoshuaEstes/continuous_integration/master/symfony2/build/ruleset/phpcs.xml"
+         dest="${basedir}/build/ruleset/phpcs.xml"
+         verbose="true" />
+    <get src="https://raw.github.com/JoshuaEstes/continuous_integration/master/symfony2/build/ruleset/phpmd.xml"
+         dest="${basedir}/build/ruleset/phpmd.xml"
+         verbose="true" />
+    <get src="https://raw.github.com/JoshuaEstes/continuous_integration/master/symfony2/build/build.xml"
+         dest="${basedir}/build/build.xml"
+         verbose="true" />
+    <get src="https://raw.github.com/JoshuaEstes/continuous_integration/master/symfony2/build/clean.xml"
+         dest="${basedir}/build/clean.xml"
+         verbose="true" />
+    <get src="https://raw.github.com/JoshuaEstes/continuous_integration/master/symfony2/build/lint.xml"
+         dest="${basedir}/build/lint.xml"
+         verbose="true" />
+    <get src="https://raw.github.com/JoshuaEstes/continuous_integration/master/symfony2/build/pdepend.xml"
+         dest="${basedir}/build/pdepend.xml"
+         verbose="true" />
+    <get src="https://raw.github.com/JoshuaEstes/continuous_integration/master/symfony2/build/phpcb.xml"
+         dest="${basedir}/build/phpcb.xml"
+         verbose="true" />
+    <get src="https://raw.github.com/JoshuaEstes/continuous_integration/master/symfony2/build/phpcpd.xml"
+         dest="${basedir}/build/phpcpd.xml"
+         verbose="true" />
+    <get src="https://raw.github.com/JoshuaEstes/continuous_integration/master/symfony2/build/phpcs.xml"
+         dest="${basedir}/build/phpcs.xml"
+         verbose="true" />
+    <get src="https://raw.github.com/JoshuaEstes/continuous_integration/master/symfony2/build/phpdoc.xml"
+         dest="${basedir}/build/phpdoc.xml"
+         verbose="true" />
+    <get src="https://raw.github.com/JoshuaEstes/continuous_integration/master/symfony2/build/phploc.xml"
+         dest="${basedir}/build/phploc.xml"
+         verbose="true" />
+    <get src="https://raw.github.com/JoshuaEstes/continuous_integration/master/symfony2/build/phpmd.xml"
+         dest="${basedir}/build/phpmd.xml"
+         verbose="true" />
+    <get src="https://raw.github.com/JoshuaEstes/continuous_integration/master/symfony2/build/prepare.xml"
+         dest="${basedir}/build/prepare.xml"
+         verbose="true" />
+    <get src="https://raw.github.com/JoshuaEstes/continuous_integration/master/symfony2/build/symfony.clean.xml"
+         dest="${basedir}/build/symfony.clean.xml"
+         verbose="true" />
+    <get src="https://raw.github.com/JoshuaEstes/continuous_integration/master/symfony2/build/symfony.prepare.xml"
+         dest="${basedir}/build/symfony.prepare.xml"
+         verbose="true" />
+    <get src="https://raw.github.com/JoshuaEstes/continuous_integration/master/symfony2/build/symfony.test-all.xml"
+         dest="${basedir}/build/symfony.test-all.xml"
+         verbose="true" />
+    <get src="https://raw.github.com/JoshuaEstes/continuous_integration/master/symfony2/build/symfony.test-coverage.xml"
+         dest="${basedir}/build/symfony.test-coverage.xml"
+         verbose="true" />
+  </target>
+
+</project>

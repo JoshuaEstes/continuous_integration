@@ -1,0 +1,6 @@
+<project>
+  <target name="symfony.test-all"
+          description="Runs all the functional and unit test">
+    
+  </target>
+</project>

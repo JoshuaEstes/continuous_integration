@@ -1,0 +1,11 @@
+<project>
+  <target name="clean"
+          description="Cleanup build artifacts">
+    <delete dir="${basedir}/build/api"/>
+    <delete dir="${basedir}/build/code-browser"/>
+    <delete dir="${basedir}/build/coverage"/>
+    <delete dir="${basedir}/build/logs"/>
+    <delete dir="${basedir}/build/pdepend"/>
+    <antcall target="symfony.clean" />
+  </target>
+</project>

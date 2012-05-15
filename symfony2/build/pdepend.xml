@@ -1,0 +1,12 @@
+<project>
+  <target name="pdepend"
+          description="Calculate software metrics using PHP_Depend">
+    <exec executable="pdepend">
+      <arg value="--jdepend-xml=${basedir}/build/logs/jdepend.xml" />
+      <arg value="--jdepend-chart=${basedir}/build/pdepend/dependencies.svg" />
+      <arg value="--overview-pyramid=${basedir}/build/pdepend/overview-pyramid.svg" />
+      <arg value="--ignore=${basedir}/app/cache,${basedir}/app/log,${basedir}/vendor,${basedir}/web/bundles" />
+      <arg path="${basedir}" />
+    </exec>
+  </target>
+</project>

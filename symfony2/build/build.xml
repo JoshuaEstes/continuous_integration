@@ -1,0 +1,4 @@
+<project>
+  <target name="build"
+          depends="prepare,lint,phploc,pdepend,phpmd,phpcs,phpcpd,phpdoc,symfony.test-all,phpcb"/>
+</project>
